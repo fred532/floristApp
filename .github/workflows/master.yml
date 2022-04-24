@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  buil:
+  build:
     name: Deploying to Github Pages
     runs-on: ubuntu-latest
 
@@ -15,12 +15,16 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build
+        run: 
+          npm i
+          npm run build
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - run: npm i
-      - run: git config user.name "fred532" && git config user.email "mail@mail.com"
-      - run: npm run deploy
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
