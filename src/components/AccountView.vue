@@ -1,5 +1,5 @@
 <template>
-<div>account</div>
+<div>account page</div>
 </template>
 <script>
 export default {
