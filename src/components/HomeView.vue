@@ -17,6 +17,10 @@
     label-sort-asc=""
     label-sort-desc=""
     responsive="sm"></b-table>
+
+    <router-link class="take-picture-button" to="/camera">
+      <b-icon icon="camera">camera_alt</b-icon>
+    </router-link>
   </div>
 </template>
 <script>
@@ -42,6 +46,10 @@ export default {
         { isActive: true, delivery_periode: 'late', order_id: '12345638', delivery_date: '2022-04-20', product_id: '2BO', price: 50.5, delivery_name: 'John Doe' }
       ]
     }
+  },
+  methods: {
+    capture () {
+    }
   }
 }
 </script>
@@ -49,5 +57,10 @@ export default {
   .list {
     width: 100%;
     padding: 0;
+  }
+  .take-picture-button {
+    position: fixed;
+    bottom: 90px;
+    z-index: 5;
   }
 </style>
